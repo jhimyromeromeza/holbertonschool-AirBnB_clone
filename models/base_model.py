@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """class BaseModel."""
 
-
+import sys
+sys.path.append('/root/holbertonschool-AirBnB_clone/models/')
 import uuid
 from datetime import datetime
 
