@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""class console interactive"""
+
+
 import cmd
 
 
@@ -13,11 +17,11 @@ class HBNBCommad(cmd.cmd):
         """ funtion command to exit the program"""
 
         return True
-    
+
     def emptyline(self):
         """line + enter execute anything"""
-
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
