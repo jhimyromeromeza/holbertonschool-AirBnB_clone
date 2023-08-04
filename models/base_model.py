@@ -17,6 +17,8 @@ class BaseModel:
                     formobj = datetime.strptime(value, dtform)
                 if key != "__class__":
                     setattr(self, key, value)
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """Return the str representation of the BaseModel instance"""
@@ -26,6 +28,7 @@ class BaseModel:
     def save(self):
         """Update  with the current datetime."""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Return the dictionary of the BaseModel instance"""
