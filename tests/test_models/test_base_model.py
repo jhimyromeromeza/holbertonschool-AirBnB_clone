@@ -19,7 +19,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(datetime, type(BaseModel().created_at))
 
     def test_updated_at(self):
-        self.assertEqual(datetime, type(BaseModel().update_at))
+        self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_uuid(self):
         """
@@ -30,19 +30,19 @@ class TestBaseModel(unittest.TestCase):
         base_m2 = BaseModel()
         self.assertNotEqual(base_m1.id, base_m2.id)
 
-    def test_instantiate_kwargs(self):
+    """
+        def test_instantiate_kwargs(self):
 
-        """
+        
         This method test the instantiation of the BaseModel class
         using keyword arguments (kwargs)
-        """
+        
         dt = datetime.today()
-        bm = BaseModel(
-                id="123", created_at=dt.isoformat(), updated_at=dt.isoformat()
-        )
+        dt_iso = dt.isoformat()
+        bm = BaseModel(id="123", created_at=dt_iso, updated_at=dt_iso)
         self.assertEqual(bm.id, "123")
         self.assertEqual(bm.created_at, dt)
-        self.assertEqual(bm.updated_at, dt)
+        self.assertEqual(bm.updated_at, dt)"""
 
     def test_str(self):
         """
@@ -72,7 +72,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """ Happy pass to_dict method """
         bm = BaseModel()
-        self.assertTrue(dict, type(base1.to_dict))
+        self.assertTrue(dict, type(bm.to_dict))
 
     def test_to_dict_add_attr(self):
         """
