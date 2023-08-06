@@ -39,8 +39,8 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         dic_data = {}
         try:
-            with open(self.__file_path, 'r') as f
-            for k, v in dic_data.items():
-                self.__objects[k] = classes[v["__class__"]](**v)
+            with open(self.__file_path, 'r') as f:
+                for k, v in dic_data.items():
+                    self.__objects[k] = classes[v["__class__"]](**v)
         except FileNotFoundError:
             pass
