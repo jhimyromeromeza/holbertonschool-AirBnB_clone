@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """class BaseModel."""
+import models
 import uuid
 from datetime import datetime
 
@@ -17,7 +18,7 @@ class BaseModel:
                     formobj = datetime.strptime(value, dtform)
                 if key != "__class__":
                     setattr(self, key, value)
-        else:
+        else:i
             models.storage.new(self)
 
     def __str__(self):
