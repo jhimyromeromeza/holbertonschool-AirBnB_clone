@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """class console interactive"""
 
-from models.user import user
+from models.user import User
 import shlex
 import cmd
 from models import storage
