@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 from models.base_model import BaseModel
 import unittest
 from datetime import datetime
@@ -33,10 +34,8 @@ class TestBaseModel(unittest.TestCase):
     """
         def test_instantiate_kwargs(self):
 
-        
         This method test the instantiation of the BaseModel class
         using keyword arguments (kwargs)
-        
         dt = datetime.today()
         dt_iso = dt.isoformat()
         bm = BaseModel(id="123", created_at=dt_iso, updated_at=dt_iso)
@@ -51,6 +50,18 @@ class TestBaseModel(unittest.TestCase):
         """
         bm = BaseModel()
         self.assertEqual(type(str(bm)), str)
+
+    def test_str_representation(self):
+        dt = datetime.today()
+        dt_repr = repr(dt)
+        bm = BaseModel()
+        bm.id = "123456"
+        bm.created_at = bm.updated_at = dt
+        bmstr = bm.__str__()
+        self.assertIn("[BaseModel] (123456)", bmstr)
+        self.assertIn("'id': '123456'", bmstr)
+        self.assertIn("'created_at': " + dt_repr, bmstr)
+        self.assertIn("'updated_at': " + dt_repr, bmstr)
 
     def test_instantiate_arg(self):
         """ invalid arg when instantiating """
