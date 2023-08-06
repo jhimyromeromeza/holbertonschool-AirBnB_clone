@@ -14,6 +14,7 @@ class FileStorage:
     __objects:  A dictionary that will store all objects by <class name>.id.
     """
     
+    
     def all(self, cls=None):
         """Returns a dictionary of all objects"""
         if cls:
