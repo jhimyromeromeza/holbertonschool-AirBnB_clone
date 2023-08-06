@@ -17,9 +17,13 @@ class FileStorage:
     __objects:  A dictionary that will store all objects by <class name>.id.
     """
     
-    
+    def __init__(self):
+        self.__file_path = "file.json"
+        self.__objects = {}
+        
     def all(self, cls=None):
         """Returns a dictionary of all objects"""
+
         if cls:
             return {k: v for k, v in self.__objects.items() if isinstance(v, cls)}
             return self.__objects
