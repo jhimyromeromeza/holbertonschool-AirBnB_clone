@@ -10,9 +10,10 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
     
-    def do_create(self, arg):
+    def do_all(self, arg):
         """Creates a new instance of BaseModel"""
 
+        args = arg.split()
         if not arg:
             print([str(v) for v in storage.all().values()])
         elif args[0] in ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']:
