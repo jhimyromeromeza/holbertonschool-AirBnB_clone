@@ -26,7 +26,7 @@ class FileStorage:
 
         if cls:
             return {k: v for k, v in self.__objects.items() if isinstance(v, cls)}
-            return self.__objects
+        return self.__objects
 
     def new(self, obj):
         """Sets an object in the __objects attribute"""
