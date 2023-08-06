@@ -33,7 +33,7 @@ class TestBaseModel(unittest.TestCase):
 
     """
         def test_instantiate_kwargs(self):
-
+    
         This method test the instantiation of the BaseModel class
         using keyword arguments (kwargs)
         dt = datetime.today()
@@ -83,7 +83,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """ Happy pass to_dict method """
         bm = BaseModel()
-        self.assertTrue(dict, type(bm.to_dict))
+        self.assertEqual(dict, type(bm.to_dict))
 
     def test_to_dict_add_attr(self):
         """
