@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) == 3:
                 print("** value missing **")
             else:
-                setattr(objs[key], args[2], eval(args[3]))
+                setattr(objs[key], args[2], args[3])
                 storage.save()
 
 
