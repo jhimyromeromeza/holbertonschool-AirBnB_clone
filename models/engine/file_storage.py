@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 
+from models.user import User
 import os
 import json
 from models.base_model import BaseModel
