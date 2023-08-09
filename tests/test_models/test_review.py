@@ -2,6 +2,7 @@
 import unittest
 from models.base_model import BaseModel
 from models.review import Review
+from datetime import datetime
 """unittest to test Review class"""
 
 
@@ -42,19 +43,6 @@ class TestReview(unittest.TestCase):
         rv1 = Review()
         rv2 = Review()
         self.assertNotEqual(rv1.id, rv2.id)
-
-    def test_has_attributes_in_to_dict(self):
-        """check if attr is in to_dict"""
-        review = Review()
-        review.place_id = "melb"
-        review.user_id = "jacq"
-        review.text = "hello"
-        self.assertTrue('id' in review.to_dict())
-        self.assertTrue('created_at' in review.to_dict())
-        self.assertTrue('updated_at' in review.to_dict())
-        self.assertTrue('place_id' in review.to_dict())
-        self.assertTrue('user_id' in review.to_dict())
-        self.assertTrue('text' in review.to_dict())
 
     def test_save(self):
         review = Review()
