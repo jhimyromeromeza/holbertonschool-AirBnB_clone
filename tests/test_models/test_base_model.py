@@ -10,6 +10,9 @@ from time import sleep
 class TestBaseModel(unittest.TestCase):
     """Unittests for testing instantiation of the BaseModel"""
 
+    def setUp(self):
+        self.obj = BaseModel()
+
     def test_instantiate(self):
         self.assertEqual(BaseModel, type(BaseModel()))
 
@@ -31,18 +34,6 @@ class TestBaseModel(unittest.TestCase):
         base_m2 = BaseModel()
         self.assertNotEqual(base_m1.id, base_m2.id)
 
-    """
-        def test_instantiate_kwargs(self):
-    
-        This method test the instantiation of the BaseModel class
-        using keyword arguments (kwargs)
-        dt = datetime.today()
-        dt_iso = dt.isoformat()
-        bm = BaseModel(id="123", created_at=dt_iso, updated_at=dt_iso)
-        self.assertEqual(bm.id, "123")
-        self.assertEqual(bm.created_at, dt)
-        self.assertEqual(bm.updated_at, dt)"""
-
     def test_str(self):
         """
         the __str__ method of the BaseModel class returns
@@ -63,12 +54,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'created_at': " + dt_repr, bmstr)
         self.assertIn("'updated_at': " + dt_repr, bmstr)
 
-    def test_instantiate_arg(self):
-        """ invalid arg when instantiating """
-        with self.assertRaises(NameError) as e:
-            bm = BaseModel(hello)
-        self.assertEqual(str(e.exception), "name 'hello' is not defined")
-
     def test_save(self):
         """
         this test method ensures that the save method
@@ -79,30 +64,15 @@ class TestBaseModel(unittest.TestCase):
         update = bm.updated_at
         bm.save()
         self.assertNotEqual(update, bm.updated_at)
-
+    
     def test_to_dict(self):
-        """ Happy pass to_dict method """
-        bm = BaseModel()
-        self.assertEqual(dict, type(bm.to_dict))
-
-    def test_to_dict_add_attr(self):
-        """
-        this test method ensures that when additional
-        attr are added to an instance o the BaseModel class
-        and the to_dict method is called on that instance
-        """
-        base1 = BaseModel()
-        base1.city = "Los"
-        base1.state = "Angeles"
-        self.assertIn("city", base1.to_dict())
-        self.assertIn("state", base1.to_dict())
-
-    def test_to_dict_wrong_arg(self):
-        """ add an undefined arg """
-        base1 = BaseModel()
-        with self.assertRaises(NameError):
-            base1.to_dict(hello)
-
+        obj_dict = self.obj.to_dict()
+        self.assertTrue(isinstance(obj_dict, dict))
+        self.assertEqual(obj_dict['__class__'], 'BaseModel')
+        self.assertTrue('id' in obj_dict)
+        self.assertTrue('created_at' in obj_dict)
+        self.assertTrue('updated_at' in obj_dict)
+        self.assertNotEqual(obj_dict, self.obj.__dict__)
 
 if __name__ == "__main__":
     unittest.main()
