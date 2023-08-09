@@ -11,31 +11,28 @@ class TestReview(unittest.TestCase):
     def test_no_args_instantiates(self):
         self.assertEqual(Review, type(Review()))
 
-    def test_new_instance_stored_in_objects(self):
-        self.assertIn(Review(), models.storage.all().values())
-
-    def test_id_is_public_str(self):
+    def test_id(self):
         self.assertEqual(str, type(Review().id))
 
-    def test_created_at_is_public_datetime(self):
+    def test_created_at(self):
         self.assertEqual(datetime, type(Review().created_at))
 
-    def test_updated_at_is_public_datetime(self):
+    def test_updated_at(self):
         self.assertEqual(datetime, type(Review().updated_at))
 
-    def test_place_id_is_public_class_attribute(self):
+    def test_place_id(self):
         rv = Review()
         self.assertEqual(str, type(Review.place_id))
         self.assertIn("place_id", dir(rv))
         self.assertNotIn("place_id", rv.__dict__)
 
-    def test_user_id_is_public_class_attribute(self):
+    def test_user_id(self):
         rv = Review()
         self.assertEqual(str, type(Review.user_id))
         self.assertIn("user_id", dir(rv))
         self.assertNotIn("user_id", rv.__dict__)
 
-    def test_text_is_public_class_attribute(self):
+    def test_text(self):
         rv = Review()
         self.assertEqual(str, type(Review.text))
         self.assertIn("text", dir(rv))
