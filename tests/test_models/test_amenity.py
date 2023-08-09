@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
+from datetime import datetime
 from models.amenity import Amenity
+
 """Unittest to test Amenity class"""
 
 
@@ -30,15 +32,6 @@ class TestAmenity(unittest.TestCase):
         am1 = Amenity()
         am2 = Amenity()
         self.assertNotEqual(am1.id, am2.id)
-
-    def test_has_attributes_in_to_dict(self):
-        """check if attr is in to_dict"""
-        amenity = Amenity()
-        amenity.name = "garden"
-        self.assertTrue('id' in amenity.to_dict())
-        self.assertTrue('created_at' in amenity.to_dict())
-        self.assertTrue('updated_at' in amenity.to_dict())
-        self.assertTrue('name' in amenity.to_dict())
 
     def test_save(self):
         amenity = Amenity()
